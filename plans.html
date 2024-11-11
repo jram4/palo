@@ -1,0 +1,363 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palo Subscription Plans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4785ff;
+            --secondary-color: #2563eb;
+            --background-color: #f8faff;
+            --card-color: #ffffff;
+            --text-color: #2c3e50;
+            --subtext-color: #64748b;
+            --border-color: #e2e8f0;
+            --hover-color: #1d4ed8;
+            --success-color: #34a853;
+            --limit-color: #ea4335;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding-bottom: 4rem;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-bottom-left-radius: 50% 40%;
+            border-bottom-right-radius: 50% 40%;
+            transform: translateY(-20%);
+            z-index: -1;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px 100px;
+            opacity: 1;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .plan-card {
+            background: var(--card-color);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            width: 340px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-title {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--subtext-color);
+            margin-left: 0.5rem;
+            align-self: flex-end;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-features {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            margin-bottom: 1rem;
+            color: var(--subtext-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-value {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-left: auto;
+        }
+
+        .plan-button {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: var(--card-color);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.875rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .feature-name {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-detail {
+            font-size: 0.875rem;
+            color: var(--subtext-color);
+        }
+
+        .check-icon {
+            color: var(--success-color);
+            margin-right: 0.5rem;
+        }
+
+        .cross-icon {
+            color: var(--limit-color);
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .plan-card {
+                width: 100%;
+                max-width: 340px;
+            }
+
+            .comparison-table {
+                margin: 2rem 0;
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="grid-overlay"></div>
+    <div class="container">
+        <h1>Choose Your Palo Plan</h1>
+        <div class="plans-container">
+            <div class="plan-card">
+                <div class="popular-badge">POPULAR</div>
+                <h2 class="plan-title">Palo+</h2>
+                <p class="plan-price">FREE<span>/ limited time</span></p>
+                <ul class="plan-features">
+                    <li>Video Summaries <span class="feature-value">Unlimited</span></li>
+                    <li>Chat Messages <span class="feature-value">Unlimited</span></li>
+                    <li>Themes <span class="feature-value">10+ Premium</span></li>
+                    <li>Ad-free Experience <span class="feature-value">✓</span></li>
+                </ul>
+                <button class="plan-button" id="sub">Upgrade Now</button>
+            </div>
+            <div class="plan-card" id="free-plan">
+                <h2 class="plan-title">Free</h2>
+                <p class="plan-price">$0 <span>/ month</span></p>
+                <ul class="plan-features">
+                    <li>Video Summaries <span class="feature-value">5 / day</span></li>
+                    <li>Chat Messages <span class="feature-value">20 / day</span></li>
+                    <li>Themes <span class="feature-value">3 Basic</span></li>
+                    <li>Ad-free Experience <span class="feature-value">✓</span></li>
+                </ul>
+                <button class="plan-button" id="reg">Manage Settings</button>
+            </div>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Free</th>
+                    <th>Plus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="feature-name">Video Summaries</span>
+                        <span class="feature-detail">Daily limit for video summarization</span>
+                    </td>
+                    <td><span class="check-icon">✓</span> 5 per day</td>
+                    <td><span class="check-icon">✓</span> Unlimited</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Chat Sends</span>
+                        <span class="feature-detail">Q&A and Insights</span>
+                    </td>
+                    <td><span class="check-icon">✓</span> 20 per day</td>
+                    <td><span class="check-icon">✓</span> Unlimited</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Timestamped Navigation</span>
+                        <span class="feature-detail">Jump to specific video moments</span>
+                    </td>
+                    <td><span class="check-icon">✓</span> Included</td>
+                    <td><span class="check-icon">✓</span> Included</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Themes</span>
+                        <span class="feature-detail">Customize your experience</span>
+                    </td>
+                    <td><span class="check-icon">✓</span> 3 Basic</td>
+                    <td><span class="check-icon">✓</span> 10+ Premium</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Transcript Downloads</span>
+                        <span class="feature-detail">Save video transcripts</span>
+                    </td>
+                    <td><span class="check-icon">×</span> Included</td>
+                    <td><span class="check-icon">✓</span> Included</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Language Translation</span>
+                        <span class="feature-detail">Translate content to other languages</span>
+                    </td>
+                    <td><span class="cross-icon">×</span> Not available</td>
+                    <td><span class="check-icon">✓</span> Included</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Early Access</span>
+                        <span class="feature-detail">Be the first to try new features</span>
+                    </td>
+                    <td><span class="cross-icon">×</span> Not available</td>
+                    <td><span class="check-icon">✓</span> Included</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="plans.js"></script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palo Installation Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+        --primary-color-ext: #0072ff; 
+        --secondary-color-ext: #0062cc; 
+        --background-color-ext: #ffffff;
+        --card-color-ext: #f8f9fa;
+        --text-color-ext: #212529; 
+        --subtext-color-ext: #495057; 
+        --light-gray-border-ext: #e9ecef;
+        --lighter-gray-ext: #f1f3f5; 
+        --gray-text-ext: #6c757d; 
+        --border-color-ext: #ced4da; 
+        --loading-dots-color-ext: #007bff; 
+        --timeline-timestamp-ext: #6c757d;
+        --link-color-ext: #007bff; 
+        --link-hover-color-ext: #0069d9; 
+        --svg-main-ext: #000000;
+        --svg-selected-ext: #ffffff;
+        --timestamp-color-ext: #065fd4;
+        --timestamp-background-ext: #f9fcff;
+        --focus-button-color: #0052cc;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="default"][data-mode="dark"] {
+        --primary-color-ext: #0072ff;
+        --secondary-color-ext: #0052cc; 
+        --background-color-ext: #0f1724;
+        --card-color-ext: #1c2b41; 
+        --text-color-ext: #ffffff;
+        --subtext-color-ext: #B0B0B0; 
+        --light-gray-border-ext: #374151;
+        --lighter-gray-ext: #4b5563; 
+        --gray-text-ext: #9ca3af; 
+        --border-color-ext: #6b7280; 
+        --loading-dots-color-ext: #4c9aff; 
+        --timeline-timestamp-ext: #9ca3af;
+        --link-color-ext: #4c9aff; 
+        --link-hover-color-ext: #79b8ff; 
+        --svg-main-ext: #ffffff;
+        --svg-selected-ext: #FFFFFF;
+        --timestamp-color-ext: #065fd4;
+        --timestamp-background-ext: #f9fcff;
+        --focus-button-color: #4c9aff;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="forest"][data-mode="light"] {
+        --primary-color-ext: #2ecc71;
+        --secondary-color-ext: #27ae60; 
+        --background-color-ext: #f1f8e9;
+        --card-color-ext: #e8f5e9; 
+        --text-color-ext: #1b5e20;
+        --subtext-color-ext: #33691e; 
+        --light-gray-border-ext: #c8e6c9;
+        --lighter-gray-ext: #dcedc8; 
+        --gray-text-ext: #558b2f; 
+        --border-color-ext: #81c784; 
+        --loading-dots-color-ext: #4caf50; 
+        --timeline-timestamp-ext: #689f38;
+        --link-color-ext: #43a047; 
+        --link-hover-color-ext: #2e7d32; 
+        --svg-main-ext: #1b5e20;
+        --svg-selected-ext: #ffffff;
+        --timestamp-color-ext: #33691e;
+        --timestamp-background-ext: #e8f5e9;
+        --focus-button-color: #43a047;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="forest"][data-mode="dark"] {
+        --primary-color-ext: #2ecc71;
+        --secondary-color-ext: #27ae60; 
+        --background-color-ext: #1b2a1b;
+        --card-color-ext: #2c3e2c; 
+        --text-color-ext: #a5d6a7;
+        --subtext-color-ext: #81c784; 
+        --light-gray-border-ext: #3e4f3e;
+        --lighter-gray-ext: #4c5f4c; 
+        --gray-text-ext: #81c784; 
+        --border-color-ext: #4caf50; 
+        --loading-dots-color-ext: #66bb6a; 
+        --timeline-timestamp-ext: #81c784;
+        --link-color-ext: #4caf50; 
+        --link-hover-color-ext: #66bb6a; 
+        --svg-main-ext: #a5d6a7;
+        --svg-selected-ext: #1b2a1b;
+        --timestamp-color-ext: #66bb6a;
+        --timestamp-background-ext: #2c3e2c;
+        --focus-button-color: #4caf50;
+        --focus-button-text: #1b2a1b;
+    }
+
+    :root[data-theme="ocean"][data-mode="light"] {
+        --primary-color-ext: #03a9f4;
+        --secondary-color-ext: #0288d1; 
+        --background-color-ext: #e3f2fd;
+        --card-color-ext: #bbdefb; 
+        --text-color-ext: #01579b;
+        --subtext-color-ext: #0277bd; 
+        --light-gray-border-ext: #90caf9;
+        --lighter-gray-ext: #e1f5fe; 
+        --gray-text-ext: #0288d1; 
+        --border-color-ext: #64b5f6; 
+        --loading-dots-color-ext: #29b6f6; 
+        --timeline-timestamp-ext: #0277bd;
+        --link-color-ext: #0288d1; 
+        --link-hover-color-ext: #01579b; 
+        --svg-main-ext: #01579b;
+        --svg-selected-ext: #ffffff;
+        --timestamp-color-ext: #0277bd;
+        --timestamp-background-ext: #e1f5fe;
+        --focus-button-color: #0288d1;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="ocean"][data-mode="dark"] {
+        --primary-color-ext: #03a9f4;
+        --secondary-color-ext: #0288d1; 
+        --background-color-ext: #0a2435;
+        --card-color-ext: #0f3a5f; 
+        --text-color-ext: #b3e5fc;
+        --subtext-color-ext: #81d4fa; 
+        --light-gray-border-ext: #1565c0;
+        --lighter-gray-ext: #1976d2; 
+        --gray-text-ext: #4fc3f7; 
+        --border-color-ext: #1e88e5; 
+        --loading-dots-color-ext: #29b6f6; 
+        --timeline-timestamp-ext: #4fc3f7;
+        --link-color-ext: #29b6f6; 
+        --link-hover-color-ext: #4fc3f7; 
+        --svg-main-ext: #b3e5fc;
+        --svg-selected-ext: #0a2435;
+        --timestamp-color-ext: #29b6f6;
+        --timestamp-background-ext: #0f3a5f;
+        --focus-button-color: #0288d1;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="sunset"][data-mode="light"] {
+        --primary-color-ext: #ff7043;
+        --secondary-color-ext: #f4511e; 
+        --background-color-ext: #fff3e0;
+        --card-color-ext: #ffe0b2; 
+        --text-color-ext: #bf360c;
+        --subtext-color-ext: #d84315; 
+        --light-gray-border-ext: #ffcc80;
+        --lighter-gray-ext: #fff8e1; 
+        --gray-text-ext: #ef6c00; 
+        --border-color-ext: #ffb74d; 
+        --loading-dots-color-ext: #ff9800; 
+        --timeline-timestamp-ext: #e65100;
+        --link-color-ext: #f57c00; 
+        --link-hover-color-ext: #e65100; 
+        --svg-main-ext: #bf360c;
+        --svg-selected-ext: #ffffff;
+        --timestamp-color-ext: #d84315;
+        --timestamp-background-ext: #fff8e1;
+        --focus-button-color: #f57c00;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="sunset"][data-mode="dark"] {
+        --primary-color-ext: #ff7043;
+        --secondary-color-ext: #f4511e; 
+        --background-color-ext: #3e2723;
+        --card-color-ext: #4e342e; 
+        --text-color-ext: #ffccbc;
+        --subtext-color-ext: #ffab91; 
+        --light-gray-border-ext: #6d4c41;
+        --lighter-gray-ext: #795548; 
+        --gray-text-ext: #ff8a65; 
+        --border-color-ext: #d84315; 
+        --loading-dots-color-ext: #ff5722; 
+        --timeline-timestamp-ext: #ff8a65;
+        --link-color-ext: #ff5722; 
+        --link-hover-color-ext: #ff7043; 
+        --svg-main-ext: #ffccbc;
+        --svg-selected-ext: #3e2723;
+        --timestamp-color-ext: #ff5722;
+        --timestamp-background-ext: #4e342e;
+        --focus-button-color: #f4511e;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="palo"][data-mode="light"] {
+        --primary-color-ext: #4a90e2;
+        --secondary-color-ext: #3a7bd5; 
+        --background-color-ext: #f0f8ff;
+        --card-color-ext: #e6f2ff; 
+        --text-color-ext: #2c3e50;
+        --subtext-color-ext: #34495e; 
+        --light-gray-border-ext: #d4e6f7;
+        --lighter-gray-ext: #ecf5fe; 
+        --gray-text-ext: #7f8c8d; 
+        --border-color-ext: #bdd9f2; 
+        --loading-dots-color-ext: #5fa8f5; 
+        --timeline-timestamp-ext: #6a89ad;
+        --link-color-ext: #3498db; 
+        --link-hover-color-ext: #2980b9; 
+        --svg-main-ext: #2c3e50;
+        --svg-selected-ext: #ffffff;
+        --timestamp-color-ext: #3a7bd5;
+        --timestamp-background-ext: #f0f8ff;
+        --focus-button-color: #4a90e2;
+        --focus-button-text: #ffffff;
+    }
+
+    :root[data-theme="palo"][data-mode="dark"] {
+        --primary-color-ext: #4a90e2;
+        --secondary-color-ext: #3a7bd5; 
+        --background-color-ext: #1c2331;
+        --card-color-ext: #2c3e50; 
+        --text-color-ext: #ecf0f1;
+        --subtext-color-ext: #bdc3c7; 
+        --light-gray-border-ext: #34495e;
+        --lighter-gray-ext: #445566; 
+        --gray-text-ext: #95a5a6; 
+        --border-color-ext: #3498db; 
+        --loading-dots-color-ext: #5fa8f5; 
+        --timeline-timestamp-ext: #7f8c8d;
+        --link-color-ext: #3498db; 
+        --link-hover-color-ext: #5fa8f5; 
+        --svg-main-ext: #ecf0f1;
+        --svg-selected-ext: #1c2331;
+        --timestamp-color-ext: #3a7bd5;
+        --timestamp-background-ext: #2c3e50;
+        --focus-button-color: #4a90e2;
+        --focus-button-text: #ffffff;
+    } 
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color-ext);
+      color: var(--text-color-ext);
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary-color-ext);
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background-color: var(--primary-color-ext);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('logo.png');
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .subtext {
+      font-size: 22px;
+      color: var(--subtext-color-ext);
+      margin-bottom: 10px;
+    }
+
+    .time {
+      font-size: 20px;
+      color: var(--subtext-color-ext);
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    .card {
+      background-color: var(--card-color-ext);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary-color-ext);
+      font-weight: 600;
+      font-size: 28px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      font-size: 18px;
+    }
+
+    .step {
+      margin-bottom: 40px;
+    }
+
+    .step h3 {
+      color: var(--primary-color-ext);
+      font-weight: 600;
+      font-size: 24px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    a {
+      color: var(--link-color-ext);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--link-hover-color-ext);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary-color-ext);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      font-size: 18px;
+    }
+
+    .btn:hover {
+      background-color: var(--link-hover-color-ext);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .btn {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Palo Installation Guide</h1>
+    <div class="logo"></div>
+  </div>
+
+  <p class="subtext">Follow these steps to set up Palo and start using it with your YouTube videos.</p>
+  <p class="time">⏱️ Estimated time: &lt; 5 minutes</p>
+
+  <div class="card">
+    <h2>Prerequisite</h2>
+    <ul>
+      <li>An active Google account</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <h3>Step 1: Access Google Cloud Console</h3>
+    <p>Click the button below to navigate to the Google Cloud Console.</p>
+    <a href="https://aistudio.google.com/app/apikey" target="_blank" class="btn">Go to Google Cloud Console</a>
+    <img src="step1.jpg" alt="Google Cloud Console homepage">
+  </div>
+
+  <div class="step">
+    <h3>Step 2: Create API key</h3>
+    <p>Click the center button to Create a new API key.</p>
+    <img src="step2.jpg" alt="Creating a new project in Google Cloud Console">
+  </div>
+
+  <div class="step">
+    <h3>Step 3: Create API key in a new project</h3>
+    <p>Press the button to create a API key in a new project.</p>
+    <img src="step3.jpg" alt="Enabling APIs in Google Cloud Console">
+  </div>
+
+  <div class="step">
+    <h3>Step 4: Copy the key to your clipboard</h3>
+    <p>Press the button to copy the key to your clipboard.</p>
+    <img src="step4.jpg" alt="Selecting an API in Google Cloud Console">
+  </div>
+
+  <div class="step">
+    <h3>Step 5: Open Palo settings</h3>
+    <p>In the top bar of your chrome browser press the puzzle icon to show your extension. Then click on the Palo name to open the extension's menu.</p>
+    <img src="step5.jpg" alt="Generating an API key in Google Cloud Console">
+  </div>
+
+  <div class="step">
+    <h3>Step 6: Paste and Save the API key</h3>
+    <p>Click on the input box and paste the text in your clipboard. On Mac: press Command + v, or Windows: Ctrl + v. Then press save to store the API key.</p>
+    <img src="step6.jpg" alt="Saving the API key in the extension">
+  </div>
+
+  <div class="card">
+    <h2>All done! 🎉</h2>
+    <p>Congratulations! The extension is now ready to use for any YouTube video.</p>
+    <img src="step7.jpg" alt="Success message for API key generation">
+    <p>Have fun!</p>
+  </div>
+
+  <script src="guide.js"></script>
+</body>
+</html>
