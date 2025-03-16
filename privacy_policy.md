@@ -34,7 +34,7 @@ Palo provides a default API key for Gemini AI but strongly recommends using your
 ### 1.6 Subscription Information
 For Palo+ subscriptions, we utilize ExtensionPay to manage subscription status and payments. We do not directly store or handle your financial information.
 
-- [ExtensionPay Privacy Policy](https://extensionpay.com/privacy)
+- [ExtensionPay]([https://extensionpay.com/privacy](https://extensionpay.com/))
 
 ---
 
